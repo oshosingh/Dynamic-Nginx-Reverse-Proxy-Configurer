@@ -12,6 +12,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.nginx.config.model.NginxConfigModel;
@@ -23,6 +24,9 @@ public class NginxConfigService {
 	
 	@Autowired
 	private NginxLocationRepo nginxLocationRepo;
+	
+	@Value("${nginx.conf.path}")
+	private String nginxWriteConfPath;
 	
 	private String config;
 
@@ -56,7 +60,7 @@ public class NginxConfigService {
 	}
 	
 	private void writeToFile() {
-		Path path = Paths.get("nginx.conf");
+		Path path = Paths.get(nginxWriteConfPath);
 		try {
 			Files.writeString(path, config ,StandardCharsets.UTF_8);
 		} catch (IOException e) {
