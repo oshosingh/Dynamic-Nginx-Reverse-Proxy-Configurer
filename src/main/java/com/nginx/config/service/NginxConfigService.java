@@ -81,7 +81,7 @@ public class NginxConfigService {
 		// Shutdown the Executor, so it cannot receive more threads
 		executors.shutdown();
 		
-		// Causes the main thread to wait until the latch has counted down to zero (if all executor threads are done)
+		// Causes the main thread to wait until all executor threads are done executing their tasks
 		try {
 			executors.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
 		} catch (InterruptedException e) {
