@@ -64,7 +64,6 @@ public class NginxConfigService {
 		try {
 			Files.writeString(path, config ,StandardCharsets.UTF_8);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
