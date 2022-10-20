@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class NginxProxyInput {
+	private String sandboxCode;
 	private String proxyUrl;
-	private String proxyPath;
+	private boolean rewritePrefix;
 }

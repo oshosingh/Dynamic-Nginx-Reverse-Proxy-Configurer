@@ -15,7 +15,7 @@ public class NginxConfigModel {
 	
 	@Id
 	private Long locationId;
-	private String locationPath;
+	private String sandboxCode;
 	private String proxyUrl;
 
 }

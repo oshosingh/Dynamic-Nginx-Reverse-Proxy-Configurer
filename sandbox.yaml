@@ -1,0 +1,20 @@
+- name: Sandbox Playbook
+  hosts: localhost
+  gather_facts: false
+  become: yes
+  vars:
+    containerName: "{{ containerName }}"
+    portNumber: "{{ portNumber }}"
+    password: "{{ password }}"
+    
+  tasks:
+    - name: Launch sandbox container
+      docker_container:
+        name: "{{ containerName }}"
+        image: codercom/coder:latest
+        state: present
+        expose_ports:
+          - '"{{ portNumber }}":8080'
+        env:
+          PASSWORD: "{{ password }}"
+         
